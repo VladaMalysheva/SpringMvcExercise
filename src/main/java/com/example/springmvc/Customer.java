@@ -1,5 +1,9 @@
 package com.example.springmvc;
 
+import com.example.springmvc.validation.CourseCode;
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 public class Customer {
@@ -15,6 +19,17 @@ public class Customer {
 
     @Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "only 5 characters")
     private String  postalCode;
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    @CourseCode(value = "TOPS", message = "Must begin with TOPS")
+    private String courseCode;
 
     public String getPostalCode() {
         return postalCode;
